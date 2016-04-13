@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class SMSLogSimulator implements SMS{
 	Log log = LogFactory.getLog(SMSLogSimulator.class);
 	public boolean send(String phone, String content) {
-		log.info("寰�鎵嬫満鍙风爜(" + phone + ") 鍙戦�佺煭淇�(" + content + ") 鎴愬姛");
+		log.info("往手机号码(" + phone + ") 发送短信(" + content + ") 成功");
 		return true;
 	}
 	public int sendMessage(String tel, int time, String code) {
