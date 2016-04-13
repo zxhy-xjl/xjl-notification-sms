@@ -9,6 +9,10 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
+/**
+* @author  yangzaixiong
+* 创建时间             2016年4月13日上午11:27:52
+*/
 @Service
 public class SMSLogSimulator implements SMS{
 	Log log = LogFactory.getLog(SMSLogSimulator.class);
