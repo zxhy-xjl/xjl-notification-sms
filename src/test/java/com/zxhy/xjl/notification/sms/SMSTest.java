@@ -13,6 +13,6 @@ public class SMSTest {
 	private SMS sms;
 	@Test
 	public void send(){
-		this.sms.send("138", "测试信息");
+		this.sms.sendMessage("18809507419", 120, "1234");
 	}
 }
