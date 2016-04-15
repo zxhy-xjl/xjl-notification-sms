@@ -12,4 +12,5 @@ public interface SMS {
 	 * @return
 	 */
 	public boolean send(String phone, String content);
+	public int sendMessage(String tel, int time, String code);
 }
