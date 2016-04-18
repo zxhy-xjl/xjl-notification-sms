@@ -9,18 +9,16 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
+
 /**
-* @author  yangzaixiong
-* 创建时间             2016年4月13日上午11:27:52
-*/
+ * @author yangzaixiong 创建时间 2016年4月13日上午11:27:52
+ */
 @Service
-public class SMSLogSimulator implements SMS{
+public class SMSLogSimulator implements SMS {
 	Log log = LogFactory.getLog(SMSLogSimulator.class);
+
 	public boolean send(String phone, String content) {
 		log.info("往手机号码(" + phone + ") 发送短信(" + content + ") 成功");
-		return true;
-	}
-	public int sendMessage(String tel, int time, String code) {
 		String url = "/sms/Api/Send.do";
 		String host = "nx.ums86.com";
 		HttpClient httpClient = new HttpClient();
@@ -29,10 +27,8 @@ public class SMSLogSimulator implements SMS{
 		PostMethod post = new PostMethod(url);
 		post.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gbk");
 		NameValuePair[] param = { new NameValuePair("SpCode", "218784"), new NameValuePair("LoginName", "yc_spj"),
-				new NameValuePair("Password", "spj123"),
-				new NameValuePair("MessageContent",
-						"门户网站，" + code + "是您本次身份校验码，" + time + "分钟内有效．审批局工作人员绝不会向您索取此校验码，切勿告知他人．"),
-				new NameValuePair("UserNumber", tel) };
+				new NameValuePair("Password", "spj123"), new NameValuePair("MessageContent", content),
+				new NameValuePair("UserNumber", phone) };
 		post.setRequestBody(param);
 		post.releaseConnection();
 		try {
@@ -44,19 +40,20 @@ public class SMSLogSimulator implements SMS{
 			log.debug("调用短信平台正常 ");
 
 			if (Integer.parseInt(result) == 0) {
-				return 0;// 发送成功
+				return true;// 发送成功
 			} else {
-				return 1;// 发送失败
+				return false;// 发送失败
 			}
 		} catch (HttpException e) {
 			e.printStackTrace();
-			log.debug("调用短信平台异常 ");
-			return 1;// 发送失败
+			log.info("调用短信平台异常 ");
+			return false;// 发送失败
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.debug("调用短信平台异常 ");
-			return 1;// 发送失败
+			log.info("调用短信平台异常 ");
+			return false;// 发送失败
 		}
 
 	}
+
 }

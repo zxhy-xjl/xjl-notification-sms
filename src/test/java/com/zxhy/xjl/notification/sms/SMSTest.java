@@ -17,6 +17,6 @@ public class SMSTest {
 	private SMS sms;
 	@Test
 	public void send(){
-		this.sms.sendMessage("18809507419", 120, "1234");
+		this.sms.send("18809507419", "门户网站，123456 是您本次身份校验码，5 分钟内有效．审批局工作人员绝不会向您索取此校验码，切勿告知他人．");
 	}
 }

@@ -20,5 +20,5 @@ public interface SMS {
 	 * @param code
 	 * @return
 	 */
-	public int sendMessage(String tel, int time, String code);
+	//public int sendMessage(String tel, int time, String code);
 }
