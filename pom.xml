@@ -4,7 +4,7 @@
 
   <groupId>com.xjl</groupId>
   <artifactId>xjl-notification-sms</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <packaging>jar</packaging>
 
   <name>xjl-notification-sms</name>
